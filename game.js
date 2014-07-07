@@ -106,6 +106,9 @@ Game.prototype = {
         if (obj.col + 1 < this.col) {
             this.changeStatus(obj.row, obj.col + 1);
         }
+        if(this.emptyCells == 0){
+            alert("WIN!");
+        }
     },
     changeStatus: function(row, col) {
 
@@ -121,10 +124,6 @@ Game.prototype = {
         }        
         this.getId('J_light').innerHTML = this.totalCells - this.emptyCells;
         this.getId('J_black').innerHTML = this.emptyCells;
-
-        if(this.emptyCells == 0){
-            alert("WIN!");
-        }
     },
     pause: function() {
         clearInterval(this.T);
