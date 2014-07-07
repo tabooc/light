@@ -27,8 +27,8 @@ a,a:hover{color:#333;}
 .m-menu{padding: 10px;}
 .u-btn{margin-right: 5px;color: #f00;}
 .u-record{margin-right: 3px;}
-.g-gamebox{width: 545px;height: 545px;overflow: hidden;margin: 0 auto;}
-.m-game{width: 550px;height: 550px;}
+.g-gamebox{width: 880px;overflow: hidden;margin: 0 auto;}
+.m-game{margin: 0 auto;}
 .m-game li{width: 50px;height: 50px;background: #ccc;float: left;margin: 0 5px 5px 0;cursor: pointer;}
 .m-game li.light{background: green;}
 .z-disabled, a.z-disabled{color: #000;cursor: text;}
