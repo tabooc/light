@@ -56,6 +56,7 @@ Game.prototype = {
                     alert("游戏已暂停,请点击继续游戏..");
                     return false;
                 }
+
                 var idInfo = _this.getCellInfo(this.id);
                 _this.changeStatus(idInfo.row, idInfo.col);
                 _this.findCells(idInfo);
@@ -106,10 +107,11 @@ Game.prototype = {
         if (obj.col + 1 < this.col) {
             this.changeStatus(obj.row, obj.col + 1);
         }
-        
+
         if (this.emptyCells == 0) {
             this.pause();
             this.getId("J_stop").innerHTML = "选择其他难度";
+            this.getId("J_pause").style.display = "none";
             alert("WIN!");
         }
     },
@@ -124,7 +126,7 @@ Game.prototype = {
         } else {
             obj.className = this.selClass;
             this.emptyCells--;
-        }        
+        }
         this.getId('J_light').innerHTML = this.totalCells - this.emptyCells;
         this.getId('J_black').innerHTML = this.emptyCells;
     },
@@ -146,8 +148,8 @@ document.getElementById("J_play").onclick = function() {
     if (lock == "1") {
         return false;
     }
-    document.getElementById("J_level").setAttribute("disabled","disabled");
-    this.className = this.className.replace(/ z-enable/,"") +" z-disabled";
+    document.getElementById("J_level").setAttribute("disabled", "disabled");
+    this.className = this.className.replace(/ z-enable/, "") + " z-disabled";
     document.getElementById("J_pause").className = document.getElementById("J_pause").className + " z-enable";
     document.getElementById("J_stop").className = document.getElementById("J_stop").className + " z-enable";
     this.setAttribute("data-st", 1);
