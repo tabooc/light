@@ -106,7 +106,10 @@ Game.prototype = {
         if (obj.col + 1 < this.col) {
             this.changeStatus(obj.row, obj.col + 1);
         }
-        if(this.emptyCells == 0){
+        
+        if (this.emptyCells == 0) {
+            this.pause();
+            this.getId("J_stop").innerHTML = "选择其他难度";
             alert("WIN!");
         }
     },
