@@ -56,6 +56,10 @@ Game.prototype = {
                     alert("游戏已暂停,请点击继续游戏..");
                     return false;
                 }
+                if (_this.emptyCells == 0) {
+                    alert("此难度已通过,请点击'选择其他难度'开始新的游戏!");
+                    return false;
+                }
 
                 var idInfo = _this.getCellInfo(this.id);
                 _this.changeStatus(idInfo.row, idInfo.col);
