@@ -30,8 +30,8 @@ Game.prototype = {
                 nodes.appendChild(li);
             }
         }
-        this.getId(this.box).style.width = this.level * 55 + "px";
-        this.getId(this.box).style.height = this.level * 55 + "px";
+        this.getId(this.box).style.width = this.col * 55 + "px";
+        this.getId(this.box).style.height = this.row * 55 + "px";
         this.getId(this.box).appendChild(nodes);
         this.run();
     },
