@@ -2,22 +2,23 @@
     main
 */
 
-var Game = function() {
+var Game = function(level) {
     this.lock = false;
+    this.level = level;
     this.box = "J_game";
-    this.row = 10;
-    this.col = 10;
+    this.row = this.level;
+    this.col = this.level;
     this.totalTime = 0;
     this.T = null;
     this.totalCells = this.row * this.col;
     this.emptyCells = this.totalCells;
     this.selClass = "light";
-    this.init();
+    this.init(this.level);
 }
 Game.prototype = {
     constructor: Game,
     //初始化格子
-    init: function() {
+    init: function(level) {
         var nodes = document.createDocumentFragment(),
             li;
         this.getId(this.box).innerHTML = '';
@@ -29,6 +30,8 @@ Game.prototype = {
                 nodes.appendChild(li);
             }
         }
+        this.getId(this.box).style.width = this.level * 55 + "px";
+        this.getId(this.box).style.height = this.level * 55 + "px";
         this.getId(this.box).appendChild(nodes);
         this.run();
     },
@@ -136,13 +139,15 @@ Game.prototype = {
 }
 
 document.getElementById("J_play").onclick = function() {
-    var lock = this.getAttribute("data-st");
+    var lock = this.getAttribute("data-st"),
+        level = document.getElementById("J_level").value;
     if (lock == "1") {
         return false;
     }
+    document.getElementById("J_level").setAttribute("disabled","disabled");
     this.className = this.className.replace(/ z-enable/,"") +" z-disabled";
     document.getElementById("J_pause").className = document.getElementById("J_pause").className + " z-enable";
     document.getElementById("J_stop").className = document.getElementById("J_stop").className + " z-enable";
     this.setAttribute("data-st", 1);
-    new Game();
+    new Game(level);
 }
