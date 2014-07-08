@@ -43,7 +43,8 @@ Game.prototype = {
             _this.totalTime += 1;
             timebox.innerHTML = _this.totalTime;
         }, 1000);
-
+        
+        this.getId('J_black').innerHTML = this.emptyCells;
         this.addClickEvent();
     },
     addClickEvent: function() {
