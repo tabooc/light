@@ -1,6 +1,6 @@
 /*
-    main
-*/
+ main
+ */
 
 var Game = function(level) {
     this.lock = false;
@@ -13,14 +13,14 @@ var Game = function(level) {
     this.totalCells = this.row * this.col;
     this.emptyCells = this.totalCells;
     this.selClass = "light";
-    this.init(this.level);
-}
+    this.init();
+};
 Game.prototype = {
     constructor: Game,
     //初始化格子
-    init: function(level) {
+    init: function() {
         var nodes = document.createDocumentFragment(),
-            li;
+                li;
         this.getId(this.box).innerHTML = '';
 
         for (var i = 0; i < this.row; i++) {
@@ -37,19 +37,19 @@ Game.prototype = {
     },
     run: function() {
         var timebox = this.getId('J_time'),
-            _this = this;
+                _this = this;
 
         this.T = setInterval(function() {
             _this.totalTime += 1;
             timebox.innerHTML = _this.totalTime;
         }, 1000);
-        
+
         this.getId('J_black').innerHTML = this.emptyCells;
         this.addClickEvent();
     },
     addClickEvent: function() {
         var _this = this,
-            li = this.getId("J_game").getElementsByTagName("li");
+                li = this.getId("J_game").getElementsByTagName("li");
 
         for (var i = 0, len = li.length; i < len; i++) {
             li[i].onclick = function() {
@@ -70,9 +70,9 @@ Game.prototype = {
 
         this.getId("J_pause").onclick = function() {
             var text = this.innerHTML,
-                timebox = _this.getId('J_time');
+                    timebox = _this.getId('J_time');
 
-            if (text == "继续游戏") {
+            if (_this.lock) {
                 _this.lock = false;
                 this.innerHTML = "暂停游戏";
                 _this.T = setInterval(function() {
@@ -123,7 +123,7 @@ Game.prototype = {
     changeStatus: function(row, col) {
 
         var obj = this.getId('J_cells_' + row + "_" + col),
-            status = obj.className;
+                status = obj.className;
 
         if (status) {
             obj.className = "";
@@ -149,7 +149,7 @@ Game.prototype = {
 
 document.getElementById("J_play").onclick = function() {
     var lock = this.getAttribute("data-st"),
-        level = document.getElementById("J_level").value;
+            level = document.getElementById("J_level").value;
     if (lock == "1") {
         return false;
     }
